@@ -72,18 +72,18 @@ class BookList extends Component {
             </Row>
           </Form>
         </div>
-        <div className="d-flex justify-content-evenly">
-          <Row className="justify-content-between gap-3 col-6">
+        <Row className="justify-content-evenly">
+          <Col className="col-8 d-flex flex-wrap">
             {/* Se SearchForm esiste e filteredBooks è vuoto ovvero non ha trovato il libro richiesto allora mostri altrimenti mi fai il map dei libri trovati con quel parametro */}
             {searchForm && filteredBooks.length === 0 ? (
               <Alert variant="danger"> Mi dispiace, titolo non trovato</Alert>
             ) : (
               filteredBooks.map((newLibro) => (
-                <SingleBook key={newLibro.asin} book={newLibro} setAsin={this.setAsin} /> //passo il metodo setAsin come props a SingleBook (vedi SingleBook)
+                <SingleBook key={newLibro.asin} book={newLibro} setAsin={this.setAsin} selected={this.state.asin} /> //passo il metodo setAsin come props a SingleBook (vedi SingleBook)
               ))
             )}
-          </Row>
-          <Row>
+          </Col>
+          <Col className="col-4">
             {this.state.asin ? (
               <CommentArea asin={this.state.asin} />
             ) : (
@@ -91,8 +91,8 @@ class BookList extends Component {
                 Clicca su una copertina per vedere i commenti
               </Alert>
             )}
-          </Row>
-        </div>
+          </Col>
+        </Row>
       </Container>
     );
   }

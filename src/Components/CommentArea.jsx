@@ -40,14 +40,14 @@ class CommentArea extends Component {
     console.log(this.props.asin);
     return (
       <div>
+        <h6 className="mt-3">Inserisci il tuo feedback:</h6>
+        <AddComments asin={this.props.asin} ricarica={this.fetchComments} />
         <h5>Comments:</h5>
         {this.state.comments.length > 0 ? (
           <CommentsList commenti={this.state.comments} asin={this.props.asin} ricarica={this.fetchComments} />
         ) : (
           <Alert>non ci sono commenti</Alert>
         )}
-        <h6 className="mt-3">Inserisci il tuo feedback:</h6>
-        <AddComments asin={this.props.asin} ricarica={this.fetchComments} />
       </div>
     );
   }
